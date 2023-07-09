@@ -11,11 +11,12 @@ class CreateChatTest2 {
         val result = createChat.deleteChat(1)
         assertTrue(result)
     }
-    @Test(expected = NoChatExeption::class)
-    fun shouldThrow() {
+    @Test
+    fun deleteChatFalse() {
         val createChat = CreateChat
-        val result = createChat.deleteChat(1)
+        createChat.addChat(1,Message(1,"hi"))
+        val result = createChat.deleteChat(2)
         assertFalse(result)
-
     }
+
 }

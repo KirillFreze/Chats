@@ -14,16 +14,9 @@ object CreateChat {
     private val chats: MutableMap<Int, Chat> = mutableMapOf()
     private var unicId = 1
 
-    fun addChat(userId: Int, message: Message): Boolean {
-        if (chats.containsKey(userId)) {
-            chats[userId]?.messages?.add(message.copy(idMessage = unicId++))
-            return true
-        } else {
-            val chat = Chat()
-            chat.messages.add(message.copy(idMessage = unicId++))
-            chats[userId] = chat
-            return false
-        }
+    fun addChat(userId: Int, message: Message) : Boolean{
+        chats.getOrPut(userId) { Chat() }.messages += message.copy(idMessage = unicId++)
+        return  true
     }
 
     fun deleteChat(userId: Int): Boolean {
@@ -31,7 +24,7 @@ object CreateChat {
             chats.remove(userId)
             return true
         } else {
-            throw NoChatExeption()
+
             return false
         }
     }
