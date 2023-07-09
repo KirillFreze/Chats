@@ -14,9 +14,9 @@ object CreateChat {
     private val chats: MutableMap<Int, Chat> = mutableMapOf()
     private var unicId = 1
 
-    fun addChat(userId: Int, message: Message) : Boolean{
+    fun addChat(userId: Int, message: Message): Boolean {
         chats.getOrPut(userId) { Chat() }.messages += message.copy(idMessage = unicId++)
-        return  true
+        return true
     }
 
     fun deleteChat(userId: Int): Boolean {

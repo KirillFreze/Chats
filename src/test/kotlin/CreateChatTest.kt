@@ -7,7 +7,7 @@ class CreateChatTest {
     @Test
     fun addChat() {
         val createChat = CreateChat
-        val result = createChat.addChat(1,Message(1,"Hello"))
+        val result = createChat.addChat(1, Message(1, "Hello"))
         assertTrue(result)
     }
 

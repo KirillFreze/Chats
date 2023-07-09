@@ -12,6 +12,7 @@ class CreateChatTest5 {
         val result = message.statusRead
         assertTrue(result)
     }
+
     @Test(expected = NoChatExeption::class)
     fun shouldThrow() {
         val createChat = CreateChat
