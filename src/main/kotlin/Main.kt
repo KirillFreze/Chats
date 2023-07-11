@@ -33,9 +33,9 @@ object CreateChat {
     fun lastMessage() =
         chats.values.map { chat -> chat.messages.lastOrNull { !it.statusDelete }?.message ?: "No message" }
 
-    fun getMessage(userId: Int, count: Int): List<Message> {
+    fun getMessage(userId: Int, count: Int): Sequence<Message> {
         val chat = chats[userId] ?: throw NoChatExeption()
-        return chat.messages.filter { !it.statusDelete }.takeLast(count).onEach { it.statusRead = true }
+        return chat.messages.asSequence().filter { !it.statusDelete }.take(count).onEach { it.statusRead = true }
 
     }
 
