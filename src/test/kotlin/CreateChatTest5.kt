@@ -8,7 +8,7 @@ class CreateChatTest5 {
     fun getMessage() {
         val createChat = CreateChat
         createChat.addChat(1, Message(1, "hi"))
-        val message = createChat.getMessage(1, 1)[0]
+        val message = createChat.getMessage(1, 1).last()
         val result = message.statusRead
         assertTrue(result)
     }
@@ -17,7 +17,7 @@ class CreateChatTest5 {
     fun shouldThrow() {
         val createChat = CreateChat
         createChat.addChat(1, Message(1, "hi"))
-        createChat.getMessage(2, 1)[0]
+        createChat.getMessage(2, 1).last()
 
     }
 
